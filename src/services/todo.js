@@ -1,5 +1,4 @@
 const form = document.querySelector("form-no-reload");
-let id_num = 0;
 
 const formChildS = {
   inputText: form.querySelector("input"),
@@ -9,13 +8,11 @@ const formChildS = {
 let tareas = document.getElementById("tareas");
 
 formChildS.button.addEventListener("click", () => {
-  let id = `todo-${id_num}`;
   let text = formChildS.inputText.value;
   console.log(text);
 
   if (text != "") {
-    tareas.innerHTML += `<div class='flex flex-row gap-3 justify-between' id="${id}"><p>${text}</p><button><i class='bx bx-task-x'></i></button></div>`;
-    id_num++;
+    tareas.innerHTML += `<div class='flex flex-row gap-3 justify-between'"><p>${text}</p><button><i class='bx bx-task-x'></i></button></div>`;
   }
 
   update_remove();
