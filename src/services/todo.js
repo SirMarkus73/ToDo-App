@@ -1,4 +1,4 @@
-let showTasks = document.getElementById("tareas");
+let showTasks = document.getElementById("tasks-container");
 
 const getTasks = () => {
   return localStorage.getItem("tasks").split(",");
@@ -35,8 +35,6 @@ function addAppTask(taskText, append = true) {
       localTasks.push(taskText);
 
       updateTasks(localTasks);
-
-      console.log(localStorage.getItem("tasks"));
     }
   }
 
@@ -51,8 +49,6 @@ function update_remove() {
     deleteButton.addEventListener("click", () => {
       tarea.remove();
       let index = localTasks.indexOf(taskContent.innerHTML);
-
-      console.log(index);
 
       localTasks.splice(index, 1);
 

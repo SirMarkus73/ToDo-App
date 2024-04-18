@@ -17,13 +17,13 @@
     >
       <h1 class="text-xl text-center">Todo App</h1>
 
-      <form action="." id="entrada-tareas" class="gap-3 items-center">
-        <label for="nombre-tarea" class="">Insertar tarea:</label>
+      <form action="." id="task-form" class="gap-3 items-center">
+        <label for="task-input" class="">Insertar tarea:</label>
         <input
           type="text"
-          name="nombre-tarea"
-          id="nombre-tarea"
-          class="text-base"
+          name="task-input"
+          id="task-input"
+          class="text-base w-1"
         />
         <button type="submit"><i class="bx bx-task"></i></button>
       </form>
@@ -32,7 +32,7 @@
       <main>
         <h2 class="text-lg text-center">Tareas</h2>
 
-        <div id="tareas"></div>
+        <div id="tasks-container"></div>
       </main>
     </div>
   </body>
