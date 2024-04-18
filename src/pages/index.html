@@ -17,7 +17,7 @@
     >
       <h1 class="text-xl text-center">Todo App</h1>
 
-      <form-no-reload action="." id="entrada-tareas" class="gap-3 items-center">
+      <form action="." id="entrada-tareas" class="gap-3 items-center">
         <label for="nombre-tarea" class="">Insertar tarea:</label>
         <input
           type="text"
@@ -26,18 +26,13 @@
           class="text-base"
         />
         <button type="submit"><i class="bx bx-task"></i></button>
-      </form-no-reload>
+      </form>
 
       <hr class="my-3" />
       <main>
         <h2 class="text-lg text-center">Tareas</h2>
 
-        <div id="tareas">
-          <div class="flex flex-row gap-3 justify-between">
-            <p>Tarea ejemplo</p>
-            <button><i class="bx bx-task-x"></i></button>
-          </div>
-        </div>
+        <div id="tareas"></div>
       </main>
     </div>
   </body>
