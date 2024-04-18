@@ -4,11 +4,15 @@ const getTasks = () => {
   return localStorage.getItem("tasks").split(",");
 };
 
-let localTasks = getTasks();
-
 const updateTasks = (tasks) => {
   localStorage.setItem("tasks", tasks);
 };
+
+if (localStorage.getItem("tasks") == null) {
+  localStorage.setItem("tasks", []);
+}
+
+let localTasks = getTasks();
 
 localTasks.forEach((task) => {
   addAppTask(task, false);
