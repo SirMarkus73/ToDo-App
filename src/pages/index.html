@@ -5,8 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
     <link rel="stylesheet" href="../css/style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <h1 class="text-xl">Todo App</h1>
+    <div
+      id="app"
+      class="bg-orange-300 mx-auto w-4/6 flex border-slate-800 border-2 flex-col m-5 rounded-xl p-3"
+    >
+      <h1 class="text-xl text-center">Todo App</h1>
+
+      <form-no-reload action="." id="entrada-tareas" class="gap-3 items-center">
+        <label for="nombre-tarea" class="">Insertar tarea:</label>
+        <input
+          type="text"
+          name="nombre-tarea"
+          id="nombre-tarea"
+          class="text-base"
+        />
+        <button type="submit"><i class="bx bx-task"></i></button>
+      </form-no-reload>
+
+      <hr class="my-3" />
+      <main>
+        <h2 class="text-lg text-center">Tareas</h2>
+
+        <div id="tareas">
+          <div class="flex flex-row gap-3 justify-between">
+            <p>Tarea ejemplo</p>
+            <button><i class="bx bx-task-x"></i></button>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
+
+  <script src="../services/todo.js"></script>
 </html>
