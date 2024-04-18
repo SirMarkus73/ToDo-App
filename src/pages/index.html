@@ -10,32 +10,41 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="dark:bg-neutral-950">
     <div
       id="app"
-      class="bg-orange-300 mx-auto w-4/6 flex border-slate-800 border-2 flex-col m-5 rounded-xl p-3"
+      class="bg-orange-300 dark:bg-zinc-800 dark:text-white mx-auto w-4/6 flex border-slate-800 border-2 flex-col m-5 rounded-xl p-3 min-h-[60vh]"
     >
       <h1 class="text-xl text-center">Todo App</h1>
-
-      <form action="." id="task-form" class="gap-3 items-center">
+      <hr class="my-3" />
+      <form
+        action="."
+        id="task-form"
+        class="flex flex-col md:flex-row gap-3 items-center"
+      >
         <label for="task-input" class="">Insertar tarea:</label>
         <input
           type="text"
-          name="task-input"
           id="task-input"
-          class="text-base w-1"
+          class="text-base w-3/4 dark:bg-zinc-700 border-2 border-neutral-800 border-opacity-100 dark:border-slate-300 rounded-lg"
         />
         <button type="submit"><i class="bx bx-task"></i></button>
       </form>
 
       <hr class="my-3" />
-      <main>
+      <main class="flex flex-col">
         <h2 class="text-lg text-center">Tareas</h2>
 
-        <div id="tasks-container"></div>
+        <div id="tasks-container" class="grid gap-4 md:grid-cols-2"></div>
       </main>
     </div>
   </body>
 
   <script src="../services/todo.js"></script>
 </html>
+
+<style>
+  :root {
+    color-scheme: dark, light;
+  }
+</style>
