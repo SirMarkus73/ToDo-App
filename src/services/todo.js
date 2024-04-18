@@ -29,7 +29,7 @@ formChildS.button.addEventListener("click", () => {
 
 function addAppTask(taskText, append = true) {
   if (taskText != "") {
-    showTasks.innerHTML += `<div class='flex flex-row gap-3 justify-between transition ease-in-out delay-75 dark:bg-indigo-950 dark:hover:bg-indigo-500 bg-green-500 hover:bg-green-800 hover:text-white hover:-translate-y-1 hover:scale-105 duration-300 border-2 border-slate-900'><p>${taskText}</p><button><i class='bx bx-task-x'></i></button></div>`;
+    showTasks.innerHTML += `<div class='flex flex-row gap-3 justify-between transition ease-in-out delay-75 dark:bg-dark-950 dark:hover:bg-dark-500 bg-bright-500 hover:bg-bright-850 hover:text-white hover:-translate-y-1 hover:scale-105 duration-300 border-2 border-slate-900'><p>${taskText}</p><button><i class='bx bx-task-x'></i></button></div>`;
 
     if (append) {
       localTasks.push(taskText);

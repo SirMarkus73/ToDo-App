@@ -643,14 +643,19 @@ video {
   --tw-border-opacity: 1;
 }
 
-.bg-green-500 {
+.bg-bright-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+  background-color: rgb(201 214 223 / var(--tw-bg-opacity));
 }
 
-.bg-orange-300 {
+.bg-bright-350 {
   --tw-bg-opacity: 1;
-  background-color: rgb(253 186 116 / var(--tw-bg-opacity));
+  background-color: rgb(120 149 171 / var(--tw-bg-opacity));
+}
+
+.bg-bright-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(60 95 120 / var(--tw-bg-opacity));
 }
 
 .p-3 {
@@ -707,9 +712,9 @@ video {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.hover\:bg-green-800:hover {
+.hover\:bg-bright-850:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(22 101 52 / var(--tw-bg-opacity));
+  background-color: rgb(21 49 69 / var(--tw-bg-opacity));
 }
 
 .hover\:text-white:hover {
@@ -728,38 +733,33 @@ video {
 }
 
 @media (prefers-color-scheme: dark) {
-  .dark\:border-slate-300 {
+  .dark\:border-dark-350 {
     --tw-border-opacity: 1;
-    border-color: rgb(203 213 225 / var(--tw-border-opacity));
+    border-color: rgb(118 111 161 / var(--tw-border-opacity));
   }
 
-  .dark\:bg-indigo-950 {
+  .dark\:bg-dark-500 {
     --tw-bg-opacity: 1;
-    background-color: rgb(30 27 75 / var(--tw-bg-opacity));
+    background-color: rgb(62 54 110 / var(--tw-bg-opacity));
   }
 
-  .dark\:bg-neutral-950 {
+  .dark\:bg-dark-850 {
     --tw-bg-opacity: 1;
-    background-color: rgb(10 10 10 / var(--tw-bg-opacity));
+    background-color: rgb(23 17 59 / var(--tw-bg-opacity));
   }
 
-  .dark\:bg-zinc-700 {
+  .dark\:bg-dark-950 {
     --tw-bg-opacity: 1;
-    background-color: rgb(63 63 70 / var(--tw-bg-opacity));
+    background-color: rgb(12 5 51 / var(--tw-bg-opacity));
   }
 
-  .dark\:bg-zinc-800 {
-    --tw-bg-opacity: 1;
-    background-color: rgb(39 39 42 / var(--tw-bg-opacity));
-  }
-
-  .dark\:text-white {
+  .dark\:text-dark-100 {
     --tw-text-opacity: 1;
-    color: rgb(255 255 255 / var(--tw-text-opacity));
+    color: rgb(195 192 212 / var(--tw-text-opacity));
   }
 
-  .dark\:hover\:bg-indigo-500:hover {
+  .dark\:hover\:bg-dark-500:hover {
     --tw-bg-opacity: 1;
-    background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+    background-color: rgb(62 54 110 / var(--tw-bg-opacity));
   }
 }
