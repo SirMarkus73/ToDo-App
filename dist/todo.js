@@ -1,62 +1,87 @@
-let showTasks = document.getElementById("tasks-container");
+window.addEventListener("DOMContentLoaded", () => {
+  let showTasks = document.getElementById("tasks-container");
 
-const getTasks = () => {
-  return localStorage.getItem("tasks").split(",");
-};
+  const getTasks = () => {
+    return localStorage.getItem("tasks").split(",");
+  };
 
-const updateTasks = (tasks) => {
-  localStorage.setItem("tasks", tasks);
-};
+  const updateTasks = (tasks) => {
+    localStorage.setItem("tasks", tasks);
+  };
 
-if (localStorage.getItem("tasks") == null) {
-  localStorage.setItem("tasks", []);
-}
+  if (localStorage.getItem("tasks") == null) {
+    localStorage.setItem("tasks", []);
+  }
 
-let localTasks = getTasks();
+  let localTasks = getTasks();
 
-localTasks.forEach((task) => {
-  addAppTask(task, false);
-});
+  localTasks.forEach((task) => {
+    addAppTask(task, false);
+  });
 
-const form = document.querySelector("form");
+  const form = document.querySelector("form");
 
-const formChildS = {
-  inputText: form.querySelector("input"),
-  button: form.querySelector("button"),
-};
+  const formChildS = {
+    inputText: form.querySelector("input"),
+    button: form.querySelector("button"),
+  };
 
-formChildS.button.addEventListener("click", () => {
-  let text = formChildS.inputText.value;
+  formChildS.button.addEventListener("click", () => {
+    let text = formChildS.inputText.value;
 
-  addAppTask(text);
-});
+    addAppTask(text);
+  });
 
-function addAppTask(taskText, append = true) {
-  if (taskText != "") {
-    showTasks.innerHTML += `<div class='flex text-center min-w-fit flex-col lg:flex-row gap-3 justify-between transition ease-in-out delay-75 dark:bg-dark-950 dark:hover:bg-dark-500 bg-bright-500 hover:bg-bright-850 hover:text-white hover:-translate-y-1 hover:scale-105 duration-300 border-2 border-slate-900'><select class="text-sm bg-bright-500 dark:bg-dark-500"><option value="1" class="text-xs">Completada</option><option value="0.5" class="text-xs">A medias</option><option value="0" class="text-xs" selected>Sin Completar</option></select><p>${taskText}</p><button><i class='bx bx-task-x'></i></button></div>`;
+  function removeIndexOf(array, string) {
+    let index = array.indexOf(string);
+    array.splice(index, 1);
+  }
 
-    if (append) {
-      localTasks.push(taskText);
+  function addAppTask(taskText, append = true) {
+    if (taskText != "") {
+      showTasks.innerHTML += `<task class='task flex text-center min-w-fit flex-col gap-3 justify-between transition ease-in-out delay-75 dark:bg-dark-950 dark:hover:bg-dark-500 bg-bright-500 hover:bg-bright-850 hover:text-white hover:-translate-y-1 hover:scale-105 duration-300 border-2 border-slate-900'><select class="text-sm bg-bright-500 dark:bg-dark-500"><option value="1" class="text-xs">Completada</option><option value="0.5" class="text-xs">A medias</option><option value="0" class="text-xs" selected>Sin Completar</option></select><p>${taskText}</p><div class="flex justify-around"><button><i class='bx bxs-edit'></i></button><button><i class='bx bx-task-x'></i></button></div></task>`;
 
-      updateTasks(localTasks);
+      if (append) {
+        localTasks.push(taskText);
+        updateTasks(localTasks);
+      }
     }
   }
 
-  update_remove();
-}
+  function add_event_listeners() {
+    showTasks.querySelectorAll("task").forEach((tarea) => {
+      let editButton = tarea.querySelector("div").querySelectorAll("button")[0];
+      let deleteButton = tarea
+        .querySelector("div")
+        .querySelectorAll("button")[1];
+      let taskContent = tarea.querySelector("p");
 
-function update_remove() {
-  showTasks.querySelectorAll("div").forEach((tarea) => {
-    let deleteButton = tarea.querySelector("button");
-    let taskContent = tarea.querySelector("p");
+      deleteButton.addEventListener("click", remove_task);
 
-    deleteButton.addEventListener("click", () => {
-      tarea.remove();
-      let index = localTasks.indexOf(taskContent.innerHTML);
+      editButton.addEventListener("click", () => {
+        let response = prompt("Editar tarea: ");
+        if (response != null) {
+          remove_task(false);
+          addAppTask(response);
+        }
+      });
 
-      localTasks.splice(index, 1);
+      function remove_task(confirmation = true) {
+        if (
+          confirmation == false ||
+          confirm("De verdad quiere eliminar la tarea?")
+        ) {
+          tarea.remove();
 
-      updateTasks(localTasks);
+          removeIndexOf(localTasks, taskContent.innerText);
+
+          updateTasks(localTasks);
+
+          location.reload();
+        }
+      }
     });
-  });
-}
+  }
+
+  add_event_listeners();
+});
