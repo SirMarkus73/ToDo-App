@@ -6,6 +6,19 @@ function updateTasks(tasks) {
   localStorage.setItem("tasks", tasks);
 }
 
+function removeIndexOf(array, string) {
+  let index = array.indexOf(string);
+  array.splice(index, 1);
+}
+
+function removeTask(value, confirmation = true) {
+  if (confirmation == false || confirm("De verdad quiere eliminar la tarea?")) {
+    removeIndexOf(localTasks, value);
+    updateTasks(localTasks);
+    location.reload();
+  }
+}
+
 // Se asegura de que la variable tasks nunca este vacía
 if (localStorage.getItem("tasks") == null) {
   localStorage.setItem("tasks", []);
@@ -13,6 +26,7 @@ if (localStorage.getItem("tasks") == null) {
 
 let localTasks = getTasks();
 
+// Cuando el DOM carga
 window.addEventListener("DOMContentLoaded", () => {
   let showTasks = document.getElementById("tasks-container");
 
@@ -22,21 +36,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const form = document.querySelector("form");
 
-  const formChildS = {
-    inputText: form.querySelector("input"),
-    button: form.querySelector("button"),
-  };
+  const formInput = form.querySelector("input");
+  const formButton = form.querySelector("button");
 
-  formChildS.button.addEventListener("click", () => {
-    let text = formChildS.inputText.value;
+  formButton.addEventListener("click", () => {
+    let text = formInput.value;
 
     addAppTask(text);
   });
-
-  function removeIndexOf(array, string) {
-    let index = array.indexOf(string);
-    array.splice(index, 1);
-  }
 
   function addAppTask(taskText, append = true) {
     if (taskText != "") {
@@ -57,30 +64,17 @@ window.addEventListener("DOMContentLoaded", () => {
         .querySelectorAll("button")[1];
       let taskContent = tarea.querySelector("p");
 
-      deleteButton.addEventListener("click", remove_task);
+      deleteButton.addEventListener("click", () => {
+        removeTask(taskContent.innerText);
+      });
 
       editButton.addEventListener("click", () => {
         let response = prompt("Editar tarea: ");
         if (response != null) {
-          remove_task(false);
+          removeTask(taskContent.innerText, false);
           addAppTask(response);
         }
       });
-
-      function remove_task(confirmation = true) {
-        if (
-          confirmation == false ||
-          confirm("De verdad quiere eliminar la tarea?")
-        ) {
-          tarea.remove();
-
-          removeIndexOf(localTasks, taskContent.innerText);
-
-          updateTasks(localTasks);
-
-          location.reload();
-        }
-      }
     });
   }
 
