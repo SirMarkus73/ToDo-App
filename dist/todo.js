@@ -1,19 +1,20 @@
+function getTasks() {
+  return localStorage.getItem("tasks").split(",");
+}
+
+function updateTasks(tasks) {
+  localStorage.setItem("tasks", tasks);
+}
+
+// Se asegura de que la variable tasks nunca este vacía
+if (localStorage.getItem("tasks") == null) {
+  localStorage.setItem("tasks", []);
+}
+
+let localTasks = getTasks();
+
 window.addEventListener("DOMContentLoaded", () => {
   let showTasks = document.getElementById("tasks-container");
-
-  const getTasks = () => {
-    return localStorage.getItem("tasks").split(",");
-  };
-
-  const updateTasks = (tasks) => {
-    localStorage.setItem("tasks", tasks);
-  };
-
-  if (localStorage.getItem("tasks") == null) {
-    localStorage.setItem("tasks", []);
-  }
-
-  let localTasks = getTasks();
 
   localTasks.forEach((task) => {
     addAppTask(task, false);
