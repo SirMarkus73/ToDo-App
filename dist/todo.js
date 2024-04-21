@@ -1,3 +1,10 @@
+// Se asegura de que la variable tasks nunca este vacía
+if (localStorage.getItem("tasks") == null) {
+  localStorage.setItem("tasks", []);
+}
+
+let localTasks = getTasks();
+
 function getTasks() {
   return localStorage.getItem("tasks").split(",");
 }
@@ -18,13 +25,6 @@ function removeTask(value, confirmation = true) {
     location.reload();
   }
 }
-
-// Se asegura de que la variable tasks nunca este vacía
-if (localStorage.getItem("tasks") == null) {
-  localStorage.setItem("tasks", []);
-}
-
-let localTasks = getTasks();
 
 // Cuando el DOM carga
 window.addEventListener("DOMContentLoaded", () => {
