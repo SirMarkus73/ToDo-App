@@ -9,6 +9,7 @@
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <meta name="description" content="This is a native JavaScript todo app." />
 
     <script src="./todo.js"></script>
   </head>
@@ -30,7 +31,9 @@
           id="task-input"
           class="text-base w-3/4 dark:bg-dark-500 border-2 border-neutral-800 border-opacity-100 dark:border-dark-350 rounded-lg"
         />
-        <button type="submit"><i class="bx bx-task"></i></button>
+        <button type="submit" aria-label="Send Task">
+          <i class="bx bx-task"></i>
+        </button>
       </form>
 
       <hr class="my-3" />
